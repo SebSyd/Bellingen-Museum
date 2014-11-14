@@ -31,35 +31,31 @@ Custo gallery Grid
 				$loop = new WP_Query( $args );	if( $loop -> have_posts() ) { while ( $loop -> have_posts() ) {
 				
 				$loop -> the_post();
-									    
-				 ?>
-									    
-			<li <?php post_class();?>>
-	<div class="row panel" data-equalizer>							
-	<div class="small-12 medium-6 large-6 columns" data-equalizer watch>
+				?>
+
+				<li <?php post_class();?>>
+	
+	<div class=" row panel" data-equalizer>							
+	<div class="small-12 medium-6 large-6 columns" data-equalizer-watch>
 			<?php 
+					$image = get_field('image');
 
-                  $image = get_field('image');
+                  		if( !empty($image) ): ?>
 
-                  if( !empty($image) ): ?>
+		    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
 
-	<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+			<?php endif; ?>
+    </div>
 
-<?php endif; ?>
-</div>
-		<div class="small-12 medium-6 large-6 columns" data-equalizer watch>	
+	<div class="small-12 medium-6 large-6 columns" data-equalizer-watch>	
 			<?php the_field('content'); ?>
-		</div>
-			
-			 </li>
-										
-										 <?php
-									    
-									    }			
-									wp_reset_query();
-								} ?>
-   </div>
 	</div>
+			</li>
+										
+	<?php }			wp_reset_query();} ?>
+	 
+    </div> <!--2nd row row-->
+	</div><!--initial row-->
 </ul>
 	
 <p><?php the_tags(); ?></p>
@@ -77,13 +73,9 @@ Custo gallery Grid
 	<!--End the loop -->
 	<?php endif; ?>
 	
-
-
-
-
 <?php //get_sidebar(); ?>
 
-</div><!--initial row-->
+</div> <!-- alert box -->
 
 </div> <!-- content wrap ->
 		
