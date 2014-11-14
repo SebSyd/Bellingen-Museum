@@ -26,6 +26,7 @@ Custo gallery Grid
 				'orderby' =>'title',
 				'order' => 'asc',
 				
+				
 			   );
 	
 				$loop = new WP_Query( $args );	if( $loop -> have_posts() ) { while ( $loop -> have_posts() ) {
@@ -35,8 +36,15 @@ Custo gallery Grid
 				 ?>
 									    
 			<li <?php post_class();?>>
+
+
+			<div class="row"	data-equalizer>	    				
+<div class="large-4 medium-4 columns">		
+	<div class="panel tbgreen" data-equalizer-watch>
+
+
 	<div class="row panel" data-equalizer>							
-	<div class="small-12 medium-6 large-6 columns" data-equalizer>
+	<div class="small-12 medium-6 large-6 columns panel" data-equalizer>
 		<?php 
 
 $image = get_field('image');
