@@ -26,7 +26,6 @@ Custo gallery Grid
 				'orderby' =>'title',
 				'order' => 'asc',
 				
-				
 			   );
 	
 				$loop = new WP_Query( $args );	if( $loop -> have_posts() ) { while ( $loop -> have_posts() ) {
@@ -36,35 +35,21 @@ Custo gallery Grid
 				 ?>
 									    
 			<li <?php post_class();?>>
-
-
-			<div class="row"	data-equalizer>	    				
-<div class="large-4 medium-4 columns">		
-	<div class="panel tbgreen" data-equalizer-watch>
-
-
 	<div class="row panel" data-equalizer>							
-	<div class="small-12 medium-6 large-6 columns panel" data-equalizer>
-		<?php 
+	<div class="small-12 medium-6 large-6 columns" data-equalizer watch>
+			<?php 
 
-$image = get_field('image');
+                  $image = get_field('image');
 
-if( !empty($image) ): ?>
+                  if( !empty($image) ): ?>
 
 	<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
 
 <?php endif; ?>
-			
-					<?php the_post_thumbnail('full', array('class' => 'alignleft')); ?>
+</div>
+		<div class="small-12 medium-6 large-6 columns" data-equalizer watch>	
+			<?php the_field('content'); ?>
 		</div>
-		<h1><?php the_field('Title'); ?></h1>
-		<?php the_field('content'); ?>
-		
-		<div class="small-12 medium-6 large-6 columns " data-equalizer>		
-		<?php //the_content(); ?>	
-		<?php the_excerpt(); ?> 
-		</div>
-	</div>
 			
 			 </li>
 										
@@ -73,9 +58,10 @@ if( !empty($image) ): ?>
 									    }			
 									wp_reset_query();
 								} ?>
-
-</ul>
+   </div>
 	</div>
+</ul>
+	
 <p><?php the_tags(); ?></p>
 	
 	
@@ -86,7 +72,7 @@ if( !empty($image) ): ?>
 	
 		<!-- The very first "if" tested to see if there were any Posts to -->
 		<!-- display.  This "else" part tells what do if there weren't any. -->
-		<div class="alert-box error">Sorry, the page you requested was not found</div>
+<div class="alert-box error">Sorry, the page you requested was not found</div>
 	
 	<!--End the loop -->
 	<?php endif; ?>
@@ -97,7 +83,7 @@ if( !empty($image) ): ?>
 
 <?php //get_sidebar(); ?>
 
-</div>
+</div><!--initial row-->
 
 </div> <!-- content wrap ->
 		
