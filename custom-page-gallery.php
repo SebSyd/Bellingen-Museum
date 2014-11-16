@@ -4,10 +4,10 @@ Template Name: Custom Page Gallery
 */
 
  get_header(); ?>
-	page		
+	Custom Page Gallery.php
 			<div id="content">
 			
-				<div id="inner-content" class="row clearfix">
+				<div id="inner-content" class="row clearfix" data-equalizer>>
 			
 				    <div id="main" class="large-12 medium-12 columns" role="main">
 
@@ -16,16 +16,14 @@ Template Name: Custom Page Gallery
 					    	<?php get_template_part( 'partials/loop', 'page' ); ?>
 					</div>    					
 					    <?php endwhile; else : ?>
-					
-					   		<?php get_template_part( 'partials/content', 'missing' ); ?>
+							<?php get_template_part( 'partials/content', 'missing' ); ?>
 
 					    <?php endif; WP_reset_postdata();?>
 			<?php $gallery = new WP_Query(Array(
-				'post_type' => '$gallery'
-				));?>
+				'post_type' => '$gallery'));?>
 				  <?php  while($gallery -> have_posts()) : $gallery ->the_post(); ?>
 				  	
-<div class="large-6 columns">
+<div class="large-6 columns" data-equalizer-watch>
     <div class="panel">
     <?php the_post_thumbnail('thumbnail' );?>
           <?php the_title();?>
